@@ -27,7 +27,7 @@ export function AnimalCard(data: AnimalData) {
   } = data;
 
   const subject =
-    `היי, ראיתי אדם שנראה לאחרונה ואשמח אם תצרי איתי קשר לגבי ` +
+    `היי, ראיתי בעל חיים שנראה לאחרונה ואשמח אם תצרי איתי קשר לגבי ` +
     `  ${name} ${id}`;
 
   return (

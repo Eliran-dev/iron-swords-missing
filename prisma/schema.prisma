@@ -7,33 +7,34 @@ generator client {
   provider = "prisma-client-js"
 }
 
-model Animal {
-  id                 String   @id @default(uuid())
-  name               String
-  animalType String @default("אחר")
-  contactName        String
-  contactPhone       String
-  status             String   @default("pending")
-  lastSeen           String?
-  identifyingDetails String?
-  imageUrl           String?
-  notes              String?
-  source             String   @default("siteform")
-  updatedAt          DateTime @updatedAt
-}
-
 model Person {
-  id                 String  @id @default(uuid())
+  id                 String   @id @default(uuid())
   firstName          String
   lastName           String
   image              String?
   contactName        String
   contactPhone       String
-  status             String  @default("pending") //"unknown" | "found" | "deceased" | "kidnapped";
+  status             String   @default("pending") //"unknown" | "found" | "deceased" | "kidnapped";
   lastSeen           String
   identifyingDetails String?
-  imageUrl           String?
-  notes  String?
-  source String?
-  updatedAt DateTime @updatedAt
+  notes              String?
+  source             String?
+  updatedAt          DateTime @updatedAt
 }
+
+
+model Animal {
+  id                 String   @id @default(uuid())
+  name               String
+  type               String   @default("אחר")
+  contactName        String
+  contactPhone       String
+  status             String   @default("pending")
+  lastSeen           String?
+  identifyingDetails String?
+  image              String?
+  notes              String?
+  source             String   @default("siteform")
+  updatedAt          DateTime @updatedAt
+}
+

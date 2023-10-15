@@ -41,12 +41,8 @@ const MissingPersonForm = () => {
     contactPhone: z.string().min(8, {
       message: "מספר הטלפון צריך להיות מספר ישראלי קווי או נייד תקין",
     }),
-    lastSeen: z
-      .string()
-      .min(10, { message: "פרטי המיקום האחרון צריכים להיות תקינים" }),
-    identifyingDetails: z
-      .string()
-      .min(6, { message: "הפרטים המזהיים צריכים להיות ארוכים מ6 תווים" }),
+    lastSeen: z.string(),
+    identifyingDetails: z.string(),
   });
   type MissingAnimalFormValues = z.infer<typeof formSchema>;
   const form = useForm<MissingAnimalFormValues>({
@@ -62,7 +58,6 @@ const MissingPersonForm = () => {
   });
 
   const onSubmit = async (data: MissingAnimalFormValues) => {
-    console.log(data);
     await axios.post("/api/person", data);
   };
 
@@ -97,7 +92,7 @@ const MissingPersonForm = () => {
               name="lastName"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>שם מלא </FormLabel>
+                  <FormLabel>שם משפחה </FormLabel>
                   <FormControl>
                     <Input
                       disabled={loading}
@@ -128,7 +123,7 @@ const MissingPersonForm = () => {
               name="contactPhone"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>מספר הטלפון של איש קשר </FormLabel>
+                  <FormLabel>טלפון של איש הקשר </FormLabel>
                   <FormControl>
                     <Input
                       disabled={loading}
@@ -145,7 +140,7 @@ const MissingPersonForm = () => {
               name="lastSeen"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>איפה החיה נראתה לאחרונה?</FormLabel>
+                  <FormLabel>היכן נראה לאחרונה?</FormLabel>
                   <FormControl>
                     <Input disabled={loading} {...field} />
                   </FormControl>

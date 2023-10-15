@@ -12,6 +12,12 @@ export async function GET(req: Request) {
     const results = await prisma.person.findMany({
       where: {
         firstName: { contains: searchName },
+        OR: [
+          { status: "נעדר" },
+          { status: "אותר" },
+          { status: "נפל" },
+          { status: "חטוף" },
+        ],
       },
 
       orderBy: {
@@ -61,14 +67,6 @@ export async function POST(req: Request) {
     }
     if (!contactPhone) {
       return new NextResponse("Contact phone is required", { status: 400 });
-    }
-    if (!lastSeen) {
-      return new NextResponse("Last seen info is required", { status: 400 });
-    }
-    if (!identifyingDetails) {
-      return new NextResponse("Identifying details are required", {
-        status: 400,
-      });
     }
 
     const data = {

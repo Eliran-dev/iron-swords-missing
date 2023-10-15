@@ -1,8 +1,8 @@
 "use client";
 import Image from "next/image";
 import { useState } from "react";
-import { Search } from "./components/search";
-import { SearchResults } from "./components/searchResults";
+import { Search } from "../../components/animal-search";
+import { SearchResults } from "../../components/animal-search-results";
 import { AnimalData } from "../utils/types";
 
 const AnimalPage = () => {

@@ -1,4 +1,4 @@
-import MissingPersonForm from "../components/missing-person-form";
+import MissingPersonForm from "../../../components/missing-person-form";
 const MissingPersonFormPage = () => {
   return (
     <div>

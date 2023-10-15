@@ -28,8 +28,10 @@ const MissingAnimalForm = () => {
   const [loading, isLoading] = useState(false);
 
   const formSchema = z.object({
-    name: z.string().min(1, { message: "שם החיה צריך להיות יותר מתו אחד" }),
-    animalType: z.string(),
+    name: z
+      .string()
+      .min(1, { message: "שם בעל החיים צריך להיות יותר מתו אחד" }),
+    type: z.string(),
     contactName: z
       .string()
       .min(1, { message: "שם הבעלים צריך יותר יותר מ-2 תווים" }),
@@ -44,7 +46,7 @@ const MissingAnimalForm = () => {
     resolver: zodResolver(formSchema),
     defaultValues: {
       name: "",
-      animalType: "",
+      type: "",
       contactName: "",
       contactPhone: "",
       lastSeen: "",
@@ -53,7 +55,6 @@ const MissingAnimalForm = () => {
   });
 
   const onSubmit = async (data: MissingAnimalFormValues) => {
-    console.log(data);
     await axios.post("/api/animals", data);
   };
 
@@ -73,7 +74,7 @@ const MissingAnimalForm = () => {
               name="name"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>שם החיה הנעדרת </FormLabel>
+                  <FormLabel>שם בעל החיים הנעדר </FormLabel>
                   <FormControl>
                     <Input
                       disabled={loading}
@@ -87,7 +88,7 @@ const MissingAnimalForm = () => {
             />
             <FormField
               control={form.control}
-              name="animalType"
+              name="type"
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>סוג בעל החיים הנעדר</FormLabel>
@@ -139,7 +140,7 @@ const MissingAnimalForm = () => {
               name="contactPhone"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>מספר הטלפון של איש קשר </FormLabel>
+                  <FormLabel>טלפון של איש הקשר </FormLabel>
                   <FormControl>
                     <Input
                       disabled={loading}
@@ -156,7 +157,7 @@ const MissingAnimalForm = () => {
               name="lastSeen"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>איפה החיה נראתה לאחרונה?</FormLabel>
+                  <FormLabel>היכן נראה לאחרונה?</FormLabel>
                   <FormControl>
                     <Input disabled={loading} {...field} />
                   </FormControl>
@@ -169,7 +170,7 @@ const MissingAnimalForm = () => {
               name="identifyingDetails"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>פרטי זיהוי של החיה</FormLabel>
+                  <FormLabel>פרטי זיהוי של בעל החיים</FormLabel>
                   <FormControl>
                     <Input disabled={loading} {...field} />
                   </FormControl>

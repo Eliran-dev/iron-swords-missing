@@ -11,6 +11,20 @@ export type PersonData = {
   notes: string;
   source: string;
 };
+
+export type AnimalData = {
+  id?: string;
+  image?: string;
+  name: string;
+  contactName: string;
+  contactPhone: string;
+  status: string; //"unknown" | "found" | "deceased" | "kidnapped";
+  lastSeen: string;
+  identifyingDetails: string;
+  notes: string;
+  source: string;
+};
+
 export type NotificationData = {
   email: string;
   notify_id: string;

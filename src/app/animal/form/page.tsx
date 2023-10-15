@@ -1,4 +1,4 @@
-import MissingAnimalForm from "../components/missing-animal-form";
+import MissingAnimalForm from "../../../components/missing-animal-form";
 
 const MissingAnimalPage = () => {
   return (

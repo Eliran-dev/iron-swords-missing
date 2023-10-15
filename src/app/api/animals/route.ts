@@ -30,12 +30,19 @@ export async function POST(req: Request) {
 
   try {
     const body = await req.json();
-    const { name, animalType, contactName, contactPhone, lastSeen } = body;
+    const {
+      name,
+      type,
+      contactName,
+      contactPhone,
+      lastSeen,
+      identifyingDetails,
+    } = body;
     console.log(body);
     if (!name) {
       return new NextResponse("Name is required", { status: 400 });
     }
-    if (!animalType) {
+    if (!type) {
       return new NextResponse("Animal type is required", { status: 400 });
     }
     if (!contactName) {
@@ -50,10 +57,11 @@ export async function POST(req: Request) {
     const animal = await prisma.animal.create({
       data: {
         name,
-        animalType,
+        type,
         contactName,
         contactPhone,
         lastSeen,
+        identifyingDetails,
       },
     });
     return NextResponse.json(animal);
